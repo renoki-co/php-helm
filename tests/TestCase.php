@@ -3,6 +3,7 @@
 namespace RenokiCo\PhpHelm\Test;
 
 use Orchestra\Testbench\TestCase as Orchestra;
+use RenokiCo\PhpHelm\Helm;
 
 abstract class TestCase extends Orchestra
 {
@@ -12,6 +13,8 @@ abstract class TestCase extends Orchestra
     public function setUp(): void
     {
         parent::setUp();
+
+        Helm::setHelmPath(getenv('HELM_PATH') ?: '/usr/local/bin/helm');
     }
 
     /**
@@ -20,7 +23,7 @@ abstract class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            //
+            \RenokiCo\PhpHelm\PhpHelmServiceProvider::class,
         ];
     }
 

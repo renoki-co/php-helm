@@ -20,6 +20,8 @@ class PhpHelmServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             __DIR__.'/../config/helm.php', 'helm'
         );
+
+        Helm::setHelmPath(config('helm.path', '/usr/local/bin/helm'));
     }
 
     /**
