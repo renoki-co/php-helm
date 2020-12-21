@@ -1,5 +1,5 @@
-Package Name Here
-===================================
+PHP Helm Wrapper
+================
 
 ![CI](https://github.com/renoki-co/php-helm/workflows/CI/badge.svg?branch=master)
 [![codecov](https://codecov.io/gh/renoki-co/php-helm/branch/master/graph/badge.svg)](https://codecov.io/gh/renoki-co/php-helm/branch/master)
