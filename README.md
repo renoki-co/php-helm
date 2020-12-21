@@ -61,7 +61,7 @@ $helm = Helm::call('repo', [
     'add',
     'stable',
     'https://charts.helm.sh/stable',
-], ['--no-update' => true], ['SOME_ENV' => '1234']);
+], ['--no-update' => true]);
 ```
 
 A third parameter is used for envs:
@@ -73,8 +73,7 @@ $helm = Helm::call('repo', [
     'add',
     'stable',
     'https://charts.helm.sh/stable',
-], ['--no-update' => true]);
-
+], ['--no-update' => true], ['SOME_ENV' => '1234']);
 ```
 
 ## Specifying Binary Path
