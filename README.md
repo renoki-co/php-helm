@@ -9,6 +9,8 @@ PHP Helm Wrapper
 [![Monthly Downloads](https://poser.pugx.org/renoki-co/php-helm/d/monthly)](https://packagist.org/packages/renoki-co/php-helm)
 [![License](https://poser.pugx.org/renoki-co/php-helm/license)](https://packagist.org/packages/renoki-co/php-helm)
 
+![K8s Version](https://img.shields.io/badge/K8s%20Version-v1.17%2B-%23326ce5)
+
 PHP Helm is a process wrapper for Kubernetes' Helm v3. You can run Helm v3 commands directly from PHP with a simple syntax.
 
 The package is running on top of [symfony/process](https://symfony.com/doc/current/components/process.html), so the API is easily accessible.
