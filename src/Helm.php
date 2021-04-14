@@ -99,7 +99,7 @@ class Helm
                 $compiledFlags[] = $name;
             } else {
                 $value = escapeshellarg($value);
-                $compiledFlags[] = "{$name}=\"{$value}\"";
+                $compiledFlags[] = "{$name}={$value}";
             }
         }
 
