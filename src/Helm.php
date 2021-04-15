@@ -2,6 +2,7 @@
 
 namespace RenokiCo\PhpHelm;
 
+use Closure;
 use Symfony\Component\Process\Process;
 
 class Helm
@@ -31,6 +32,32 @@ class Helm
     public static function call(string $action, array $flags = [], array $envs = [])
     {
         return new static($action, $flags, $envs);
+    }
+
+    /**
+     * Initiate a new helm repo add command.
+     *
+     * @param  string  $name
+     * @param  string  $url
+     * @param  array  $extraFlags
+     * @param  array  $envs
+     * @return \RenokiCo\PhpHelm\Helm
+     */
+    public static function addRepo(string $name, string $url, array $extraFlags = [], array $envs = [])
+    {
+        return static::call('repo', array_merge(['add', $name, $url], $extraFlags), $envs);
+    }
+
+    /**
+     * Initiate a helm repo update command.
+     *
+     * @param  array  $extraFlags
+     * @param  array  $envs
+     * @return \RenokiCo\PhpHelm\Helm
+     */
+    public static function repoUpdate(array $extraFlags = [], array $envs = [])
+    {
+        return static::call('repo', array_merge(['update'], $extraFlags), $envs);
     }
 
     /**
