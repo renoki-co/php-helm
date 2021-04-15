@@ -2,7 +2,6 @@
 
 namespace RenokiCo\PhpHelm;
 
-use Closure;
 use Symfony\Component\Process\Process;
 
 class Helm
