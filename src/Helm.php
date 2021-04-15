@@ -24,13 +24,41 @@ class Helm
      * Call a new Helm command.
      *
      * @param  string  $action
+     * @param  array  $params
      * @param  array  $flags
      * @param  array  $envs
      * @return \RenokiCo\PhpHelm\Helm
      */
-    public static function call(string $action, array $flags = [], array $envs = [])
+    public static function call(string $action, array $params = [], array $flags = [], array $envs = [])
     {
-        return new static($action, $flags, $envs);
+        return new static($action, $params, $flags, $envs);
+    }
+
+    /**
+     * Initiate a new helm repo add command.
+     *
+     * @param  string  $name
+     * @param  string  $url
+     * @param  array  $extraFlags
+     * @param  array  $envs
+     * @return \RenokiCo\PhpHelm\Helm
+     */
+    public static function addRepo(string $name, string $url, array $extraFlags = [], array $envs = [])
+    {
+        return static::call('repo', ['add', $name, $url], $extraFlags, $envs);
+    }
+
+    /**
+     * Initiate a helm repo update command.
+     *
+     * @param  array  $extraArgs
+     * @param  array  $extraFlags
+     * @param  array  $envs
+     * @return \RenokiCo\PhpHelm\Helm
+     */
+    public static function repoUpdate(array $extraFlags = [], array $envs = [])
+    {
+        return static::call('repo', ['update'], $extraFlags, $envs);
     }
 
     /**
