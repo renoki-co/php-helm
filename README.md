@@ -48,7 +48,9 @@ $helm = Helm::call('repo', [
     'add',
     'stable',
     'https://charts.helm.sh/stable',
-])->run();
+]);
+
+$helm->run();
 
 // The process is based on symfony/process
 echo $helm->getOutput();
@@ -66,6 +68,8 @@ $helm = Helm::call('repo', [
     'stable',
     'https://charts.helm.sh/stable',
 ], ['--no-update' => true]);
+
+$helm->run();
 ```
 
 A third parameter is used for envs:
@@ -78,6 +82,22 @@ $helm = Helm::call('repo', [
     'stable',
     'https://charts.helm.sh/stable',
 ], ['--no-update' => true], ['SOME_ENV' => '1234']);
+
+$helm->run();
+```
+
+## Custom Callers
+
+### Add Repo
+```php
+use RenokiCo\PhpHelm\Helm;
+
+$helm = Helm::addRepo('stable', 'https://charts.helm.sh/stable', [
+    '--no-update' => true,
+    '--debug' => true,
+]);
+
+$helm->run();
 ```
 
 ## Specifying Binary Path
