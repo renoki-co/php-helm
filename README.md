@@ -1,5 +1,5 @@
-PHP Helm Wrapper
-================
+PHP Helm v3 Processor
+=====================
 
 ![CI](https://github.com/renoki-co/php-helm/workflows/CI/badge.svg?branch=master)
 [![codecov](https://codecov.io/gh/renoki-co/php-helm/branch/master/graph/badge.svg)](https://codecov.io/gh/renoki-co/php-helm/branch/master)
@@ -13,9 +13,7 @@ PHP Helm Wrapper
 ![v1.19.9 K8s Version](https://img.shields.io/badge/K8s%20v1.19.9-Ready-%23326ce5?colorA=306CE8&colorB=green)
 ![v1.20.5 K8s Version](https://img.shields.io/badge/K8s%20v1.20.5-Ready-%23326ce5?colorA=306CE8&colorB=green)
 
-PHP Helm is a process wrapper for Kubernetes' Helm v3. You can run Helm v3 commands directly from PHP with a simple syntax.
-
-The package is running on top of [symfony/process](https://symfony.com/doc/current/components/process.html), so the API is easily accessible.
+PHP Helm Processor is a process wrapper for Kubernetes' Helm v3 CLI. You can run programmatically Helm v3 commands, directly from PHP, with a simple syntax.
 
 ## 🤝 Supporting
 
