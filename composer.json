@@ -1,7 +1,7 @@
 {
     "name": "renoki-co/php-helm",
-    "description": "PHP Helm is a process wrapper for Kubernetes' Helm v3.",
-    "keywords": ["laravel", "php", "helm", "kubernetes", "k8s", "charts", "wrapper", "api", "cli"],
+    "description": "PHP Helm Processor is a process wrapper for Kubernetes' Helm v3 CLI. You can run programmatically Helm v3 commands, directly from PHP, with a simple syntax.",
+    "keywords": ["laravel", "php", "helm", "kubernetes", "k8s", "charts", "wrapper", "api", "cli", "kubeadm", "kubeapi", "k0s", "k3s"],
     "license": "Apache-2.0",
     "homepage": "https://github.com/renoki-co/php-helm",
     "authors": [
