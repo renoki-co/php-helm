@@ -9,9 +9,9 @@ PHP Helm v3 Processor
 [![Monthly Downloads](https://poser.pugx.org/renoki-co/php-helm/d/monthly)](https://packagist.org/packages/renoki-co/php-helm)
 [![License](https://poser.pugx.org/renoki-co/php-helm/license)](https://packagist.org/packages/renoki-co/php-helm)
 
-![v1.18.17 K8s Version](https://img.shields.io/badge/K8s%20v1.18.17-Ready-%23326ce5?colorA=306CE8&colorB=green)
-![v1.19.9 K8s Version](https://img.shields.io/badge/K8s%20v1.19.9-Ready-%23326ce5?colorA=306CE8&colorB=green)
-![v1.20.5 K8s Version](https://img.shields.io/badge/K8s%20v1.20.5-Ready-%23326ce5?colorA=306CE8&colorB=green)
+![v1.19.11 K8s Version](https://img.shields.io/badge/K8s%20v1.19.11-Ready-%23326ce5?colorA=306CE8&colorB=green)
+![v1.20.7 K8s Version](https://img.shields.io/badge/K8s%20v1.20.7-Ready-%23326ce5?colorA=306CE8&colorB=green)
+![v1.21.1 K8s Version](https://img.shields.io/badge/K8s%20v1.21.1-Ready-%23326ce5?colorA=306CE8&colorB=green)
 
 PHP Helm Processor is a process wrapper for Kubernetes' Helm v3 CLI. You can run programmatically Helm v3 commands, directly from PHP, with a simple syntax.
 
