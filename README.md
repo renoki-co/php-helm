@@ -23,96 +23,9 @@ If you are using your application in your day-to-day job, on presentation demos,
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/R6R42U8CL)
 
-## 🚀 Installation
+## 📃 Documentation
 
-You can install the package via composer:
-
-```bash
-composer require renoki-co/php-helm
-```
-
-For Laravel, you may Publish the config:
-
-```bash
-$ php artisan vendor:publish --provider="RenokiCo\PhpHelm\PhpHelmServiceProvider" --tag="config"
-```
-
-## 🙌 Usage
-
-```php
-use RenokiCo\PhpHelm\Helm;
-
-$helm = Helm::call('repo', [
-    'add',
-    'stable',
-    'https://charts.helm.sh/stable',
-]);
-
-$helm->run();
-
-// The process is based on symfony/process
-echo $helm->getOutput();
-```
-
-## Flags & Environment Variables
-
-You might want to pass flags to the commands:
-
-```php
-use RenokiCo\PhpHelm\Helm;
-
-$helm = Helm::call('repo', [
-    'add',
-    'stable',
-    'https://charts.helm.sh/stable',
-], ['--no-update' => true]);
-
-$helm->run();
-```
-
-A third parameter is used for envs:
-
-```php
-use RenokiCo\PhpHelm\Helm;
-
-$helm = Helm::call('repo', [
-    'add',
-    'stable',
-    'https://charts.helm.sh/stable',
-], ['--no-update' => true], ['SOME_ENV' => '1234']);
-
-$helm->run();
-```
-
-## Custom Callers
-
-### Add Repo
-```php
-use RenokiCo\PhpHelm\Helm;
-
-$helm = Helm::addRepo('stable', 'https://charts.helm.sh/stable', [
-    '--no-update' => true,
-    '--debug' => true,
-]);
-
-$helm->run();
-```
-
-## Specifying Binary Path
-
-You can call it once to set the path to the binary to the `helm` cli:
-
-```php
-use RenokiCo\PhpHelm\Helm;
-
-Helm::setHelmPath('/usr/bin/my-path/helm');
-```
-
-For Laravel, you might simply publish the config and set the `HELM_PATH` env variable:
-
-```
-HELM_PATH=/usr/bin/my-path/helm
-```
+[The entire documentation is available on Gitbook 🌍](https://rennokki.gitbook.io/php-k8s/frameworks/php-helm)
 
 ## 🐛 Testing
 
