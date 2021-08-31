@@ -32,30 +32,40 @@ class HelmTest extends TestCase
 
     public function test_helm_repo_install()
     {
+        Helm::addRepo('bitnami', 'https://charts.bitnami.com/bitnami')->run();
+        Helm::repoUpdate();
+
         $process = Helm::install(
-            'test-release',
-            'stable/chart-name',
+            'release-1',
+            'bitnami/postgresql',
             ['--debug' => true]
         );
 
-        $this->assertStringContainsString(
-            'install test-release "stable/chart-name" --debug',
-            $process->getCommandLine()
-        );
+        $process->run();
+
+        dump($process->getCommandLine());
+        dump($process->getOutput());
+
+        $this->assertTrue($process->isSuccessful());
     }
 
     public function test_helm_repo_upgrade()
     {
+        Helm::addRepo('bitnami', 'https://charts.bitnami.com/bitnami')->run();
+        Helm::repoUpdate();
+
         $process = Helm::upgrade(
-            'test-release',
-            'stable/chart-name',
-            ['--debug' => true]
+            'release-2',
+            'bitnami/postgresql',
+            ['--install' => true, '--debug' => true]
         );
 
-        $this->assertStringContainsString(
-            'upgrade test-release "stable/chart-name" --debug',
-            $process->getCommandLine()
-        );
+        $process->run();
+
+        dump($process->getCommandLine());
+        dump($process->getOutput());
+
+        $this->assertTrue($process->isSuccessful());
     }
 
     public function test_helm_repo_macro()
