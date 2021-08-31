@@ -29,4 +29,51 @@ class HelmTest extends TestCase
 
         $this->assertTrue($process->isSuccessful());
     }
+
+    public function test_helm_repo_install()
+    {
+        Helm::addRepo('bitnami', 'https://charts.bitnami.com/bitnami')->run();
+        Helm::repoUpdate()->run();
+
+        $process = Helm::install(
+            'release-1',
+            'bitnami/postgresql',
+            ['--debug' => true]
+        );
+
+        $process->run();
+
+        dump($process->getCommandLine());
+        dump($process->getOutput());
+
+        $this->assertTrue($process->isSuccessful());
+    }
+
+    public function test_helm_repo_upgrade()
+    {
+        Helm::addRepo('bitnami', 'https://charts.bitnami.com/bitnami')->run();
+        Helm::repoUpdate()->run();
+
+        $process = Helm::upgrade(
+            'release-2',
+            'bitnami/postgresql',
+            ['--install' => true, '--debug' => true]
+        );
+
+        $process->run();
+
+        dump($process->getCommandLine());
+        dump($process->getOutput());
+
+        $this->assertTrue($process->isSuccessful());
+    }
+
+    public function test_helm_repo_macro()
+    {
+        Helm::macro('test', function ($var) {
+            return $var;
+        });
+
+        $this->assertEquals('123', Helm::test('123'));
+    }
 }

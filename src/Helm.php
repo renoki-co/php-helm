@@ -2,10 +2,15 @@
 
 namespace RenokiCo\PhpHelm;
 
+use Illuminate\Support\Traits\Macroable;
 use Symfony\Component\Process\Process;
 
 class Helm
 {
+    use Macroable {
+        __call as macroCall;
+    }
+
     /**
      * The process instance to run Helm from.
      *
@@ -51,7 +56,6 @@ class Helm
     /**
      * Initiate a helm repo update command.
      *
-     * @param  array  $extraArgs
      * @param  array  $extraFlags
      * @param  array  $envs
      * @return \RenokiCo\PhpHelm\Helm
@@ -59,6 +63,34 @@ class Helm
     public static function repoUpdate(array $extraFlags = [], array $envs = [])
     {
         return static::call('repo', ['update'], $extraFlags, $envs);
+    }
+
+    /**
+     * Initiate a helm install command.
+     *
+     * @param  string  $releaseName
+     * @param  string  $chart
+     * @param  array  $extraFlags
+     * @param  array  $envs
+     * @return \RenokiCo\PhpHelm\Helm
+     */
+    public static function install(string $releaseName, string $chart, array $extraFlags = [], array $envs = [])
+    {
+        return static::call('install', [$releaseName, $chart], $extraFlags, $envs);
+    }
+
+    /**
+     * Initiate a helm upgrade command.
+     *
+     * @param  string  $releaseName
+     * @param  string  $chart
+     * @param  array  $extraFlags
+     * @param  array  $envs
+     * @return \RenokiCo\PhpHelm\Helm
+     */
+    public static function upgrade(string $releaseName, string $chart, array $extraFlags = [], array $envs = [])
+    {
+        return static::call('upgrade', [$releaseName, $chart], $extraFlags, $envs);
     }
 
     /**
@@ -92,18 +124,6 @@ class Helm
     }
 
     /**
-     * Proxy the call to the process instance.
-     *
-     * @param  string  $method
-     * @param  array  $params
-     * @return mixed
-     */
-    public function __call(string $method, array $params)
-    {
-        return $this->process->{$method}(...$params);
-    }
-
-    /**
      * Compile an array of flags to helm-supported flags.
      *
      * @param  array  $flags
@@ -132,5 +152,21 @@ class Helm
         }
 
         return $compiledFlags;
+    }
+
+    /**
+     * Proxy the call to the process instance.
+     *
+     * @param  string  $method
+     * @param  array  $params
+     * @return mixed
+     */
+    public function __call(string $method, array $params)
+    {
+        if (static::hasMacro($method)) {
+            return $this->macroCall($method, $params);
+        }
+
+        return $this->process->{$method}(...$params);
     }
 }
