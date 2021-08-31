@@ -33,7 +33,7 @@ class HelmTest extends TestCase
     public function test_helm_repo_install()
     {
         Helm::addRepo('bitnami', 'https://charts.bitnami.com/bitnami')->run();
-        Helm::repoUpdate();
+        Helm::repoUpdate()->run();
 
         $process = Helm::install(
             'release-1',
@@ -52,7 +52,7 @@ class HelmTest extends TestCase
     public function test_helm_repo_upgrade()
     {
         Helm::addRepo('bitnami', 'https://charts.bitnami.com/bitnami')->run();
-        Helm::repoUpdate();
+        Helm::repoUpdate()->run();
 
         $process = Helm::upgrade(
             'release-2',
