@@ -2,10 +2,15 @@
 
 namespace RenokiCo\PhpHelm;
 
+use Illuminate\Support\Traits\Macroable;
 use Symfony\Component\Process\Process;
 
 class Helm
 {
+    use Macroable {
+        __call as macroCall;
+    }
+
     /**
      * The process instance to run Helm from.
      *
@@ -92,18 +97,6 @@ class Helm
     }
 
     /**
-     * Proxy the call to the process instance.
-     *
-     * @param  string  $method
-     * @param  array  $params
-     * @return mixed
-     */
-    public function __call(string $method, array $params)
-    {
-        return $this->process->{$method}(...$params);
-    }
-
-    /**
      * Compile an array of flags to helm-supported flags.
      *
      * @param  array  $flags
@@ -132,5 +125,21 @@ class Helm
         }
 
         return $compiledFlags;
+    }
+
+    /**
+     * Proxy the call to the process instance.
+     *
+     * @param  string  $method
+     * @param  array  $params
+     * @return mixed
+     */
+    public function __call(string $method, array $params)
+    {
+        if (static::hasMacro($method)) {
+            return $this->macroCall($method, $params);
+        }
+
+        return $this->process->{$method}(...$params);
     }
 }
