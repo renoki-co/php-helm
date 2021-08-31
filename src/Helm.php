@@ -56,7 +56,6 @@ class Helm
     /**
      * Initiate a helm repo update command.
      *
-     * @param  array  $extraArgs
      * @param  array  $extraFlags
      * @param  array  $envs
      * @return \RenokiCo\PhpHelm\Helm
@@ -64,6 +63,34 @@ class Helm
     public static function repoUpdate(array $extraFlags = [], array $envs = [])
     {
         return static::call('repo', ['update'], $extraFlags, $envs);
+    }
+
+    /**
+     * Initiate a helm install command.
+     *
+     * @param  string  $releaseName
+     * @param  string  $chart
+     * @param  array  $extraFlags
+     * @param  array  $envs
+     * @return \RenokiCo\PhpHelm\Helm
+     */
+    public static function install(string $releaseName, string $chart, array $extraFlags = [], array $envs = [])
+    {
+        return static::call('install', [$releaseName, $chart], $extraFlags, $envs);
+    }
+
+    /**
+     * Initiate a helm upgrade command.
+     *
+     * @param  string  $releaseName
+     * @param  string  $chart
+     * @param  array  $extraFlags
+     * @param  array  $envs
+     * @return \RenokiCo\PhpHelm\Helm
+     */
+    public static function upgrade(string $releaseName, string $chart, array $extraFlags = [], array $envs = [])
+    {
+        return static::call('upgrade', [$releaseName, $chart], $extraFlags, $envs);
     }
 
     /**
