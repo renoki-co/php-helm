@@ -143,12 +143,9 @@ class Helm
             // For flags that have true bind, just mention the flags directly.
             // Otherwise, add slashes for the value and attach it ad key=value.
             // You can have "--no-update" but not --no-update="1" if ['--no-update' => true] is set.
-            if ($value === true) {
-                $compiledFlags[] = $name;
-            } else {
-                $value = escapeshellarg($value);
-                $compiledFlags[] = "{$name}={$value}";
-            }
+            $compiledFlags[] = $value === true
+                ? $name
+                : "{$name}={$value}";
         }
 
         return $compiledFlags;
