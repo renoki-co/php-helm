@@ -57,7 +57,12 @@ class HelmTest extends TestCase
         $process = Helm::upgrade(
             'release-2',
             'bitnami/postgresql',
-            ['--install' => true, '--debug' => true]
+            [
+                '--install' => true,
+                '--debug' => true,
+                ['--set', 'label1=value1'],
+                ['--set', 'label2=value2'],
+            ]
         );
 
         $process->run();

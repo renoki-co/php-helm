@@ -134,6 +134,11 @@ class Helm
         $compiledFlags = [];
 
         foreach ($flags as $name => $value) {
+            // Allow to have multiple same-flag occurences like ['--debug' => true, ['--set', 'l1=v1'], ['--set', 'l2=v2']]
+            if (is_int($name) && is_array($value)) {
+                [$name, $value] = $value;
+            }
+
             // If the flag has exactly bool false, then skil the flag.
             // So ['--some-flag' => false] would mean --some-flag does not appear.
             if ($value === false) {
