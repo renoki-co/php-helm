@@ -13,9 +13,9 @@ PHP Helm Processor is a process wrapper for Kubernetes' Helm v3 CLI. You can run
 
 ## 🤝 Supporting
 
-[<img src="https://github-content.s3.fr-par.scw.cloud/static/17.jpg" height="210" width="418" />](https://github-content.renoki.org/github-repo/17)
-
 **If you are using one or more Renoki Co. open-source packages in your production apps, in presentation demos, hobby projects, school projects or so, sponsor our work with [Github Sponsors](https://github.com/sponsors/rennokki). 📦**
+
+[<img src="https://github-content.s3.fr-par.scw.cloud/static/17.jpg" height="210" width="418" />](https://github-content.renoki.org/github-repo/17)
 
 ## 📃 Documentation
 
