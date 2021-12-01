@@ -15,7 +15,7 @@
         "php": "^7.4|^8.0",
         "illuminate/macroable": "^8.67.0",
         "illuminate/support": "^8.40",
-        "symfony/process": "^5.0"
+        "symfony/process": "^5.4"
     },
     "autoload": {
         "psr-4": {
