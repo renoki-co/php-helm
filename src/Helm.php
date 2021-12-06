@@ -92,6 +92,18 @@ class Helm
     {
         return static::call('upgrade', [$releaseName, $chart], $extraFlags, $envs);
     }
+    /**
+     * Initiate a helm delete command.
+     *
+     * @param  string  $releaseName
+     * @param  array  $extraFlags
+     * @param  array  $envs
+     * @return \RenokiCo\PhpHelm\Helm
+     */
+    public static function delete(string $releaseName, array $extraFlags = [], array $envs = [])
+    {
+        return static::call('delete', [$releaseName], $extraFlags, $envs);
+    }
 
     /**
      * Change the default path for helm CLI.
