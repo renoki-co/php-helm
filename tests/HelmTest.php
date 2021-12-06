@@ -49,6 +49,24 @@ class HelmTest extends TestCase
         $this->assertTrue($process->isSuccessful());
     }
 
+    public function test_helm_repo_delete()
+    {
+        Helm::addRepo('bitnami', 'https://charts.bitnami.com/bitnami')->run();
+        Helm::repoUpdate()->run();
+
+        $process = Helm::delete(
+            'release-1',
+            ['--debug' => true]
+        );
+
+        $process->run();
+
+        dump($process->getCommandLine());
+        dump($process->getOutput());
+
+        $this->assertTrue($process->isSuccessful());
+    }
+
     public function test_helm_repo_upgrade()
     {
         Helm::addRepo('bitnami', 'https://charts.bitnami.com/bitnami')->run();
