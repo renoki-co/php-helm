@@ -92,6 +92,7 @@ class Helm
     {
         return static::call('upgrade', [$releaseName, $chart], $extraFlags, $envs);
     }
+
     /**
      * Initiate a helm delete command.
      *
