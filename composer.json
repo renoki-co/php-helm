@@ -1,7 +1,21 @@
 {
     "name": "renoki-co/php-helm",
     "description": "PHP Helm Processor is a process wrapper for Kubernetes' Helm v3 CLI. You can run programmatically Helm v3 commands, directly from PHP, with a simple syntax.",
-    "keywords": ["laravel", "php", "helm", "kubernetes", "k8s", "charts", "wrapper", "api", "cli", "kubeadm", "kubeapi", "k0s", "k3s"],
+    "keywords": [
+        "laravel",
+        "php",
+        "helm",
+        "kubernetes",
+        "k8s",
+        "charts",
+        "wrapper",
+        "api",
+        "cli",
+        "kubeadm",
+        "kubeapi",
+        "k0s",
+        "k3s"
+    ],
     "license": "Apache-2.0",
     "homepage": "https://github.com/renoki-co/php-helm",
     "authors": [
@@ -14,7 +28,7 @@
     "require": {
         "php": "^7.4|^8.0",
         "illuminate/macroable": "^8.67.0",
-        "illuminate/support": "^8.40",
+        "illuminate/support": "^8.40|^9.0",
         "symfony/process": "^5.4"
     },
     "autoload": {
@@ -31,8 +45,8 @@
         "test": "vendor/bin/phpunit"
     },
     "require-dev": {
-        "mockery/mockery": "^1.5",
-        "orchestra/testbench": "^6.24.0"
+        "mockery/mockery": "^1.5|^1.4.4",
+        "orchestra/testbench": "^6.24.0|^7.0"
     },
     "config": {
         "sort-packages": true
