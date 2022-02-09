@@ -28,6 +28,7 @@ jobs:
           - '1.23.0'
         laravel:
           - 8.*
+          - 9.*
         prefer:
           - 'prefer-lowest'
           - 'prefer-stable'
