@@ -17,22 +17,26 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: true
       matrix:
         php:
-          - '7.4'
           - '8.0'
+          - '8.1'
         kubernetes:
-          - '1.20.9'
           - '1.21.3'
           - '1.22.0'
+          - '1.23.0'
         laravel:
           - 8.*
+          - 9.*
         prefer:
           - 'prefer-lowest'
           - 'prefer-stable'
         include:
           - laravel: 8.*
             testbench: 6.*
+          - laravel: 9.*
+            testbench: 7.*
 
     name: PHP ${{ matrix.php }} - Laravel ${{ matrix.laravel }} - K8s v${{ matrix.kubernetes }} --${{ matrix.prefer }}
 
