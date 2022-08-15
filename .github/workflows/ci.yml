@@ -55,7 +55,7 @@ jobs:
         sudo apt-get update
         sudo apt-get install helm
 
-    - uses: actions/cache@v3.0.5
+    - uses: actions/cache@v3.0.7
       name: Cache dependencies
       with:
         path: ~/.composer/cache/files
